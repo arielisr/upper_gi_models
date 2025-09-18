@@ -7,18 +7,9 @@ License: CC-BY-NC-4.0 (code and docs).
 Contact: aisrael@leumit.co.il
 
 TL;DR (Quick Start)
-# clone
-git clone https://github.com/arielisr/upper_gi_models.git
-cd upper_gi_models
 
-# (optional) set a clean R environment
-# install.packages("renv"); renv::init()  # if you add renv later
-
-# put input files under ./data (see "Input data & schema")
-# then run:
 Rscript upper_gi_models.R
-
-# or override defaults:
+or override defaults:
 DATA_DIR=/path/to/data OUT_DIR=out SUBGROUP=stomach CUT_MEDIAN=FALSE Rscript upper_gi_models.R
 
 
@@ -28,7 +19,7 @@ models_<SUBGROUP>.xlsx — model summaries (logistic and, if available, conditio
 
 sessionInfo.txt — package versions for reproducibility.
 
-What this script does
+# What this script does
 
 Builds a cohort from baseline data and look-back windows.
 
@@ -40,7 +31,7 @@ Writes clean, exponentiated coefficients (ORs) with 95% CIs to Excel for downstr
 
 Runs Fisher’s exact tests for simple 2×2 comparisons (medications, diagnoses).
 
-Configuration
+# Configuration
 
 You can control behavior using environment variables:
 
@@ -50,7 +41,7 @@ OUT_DIR	out	any path	Where outputs are written
 SUBGROUP	stomach	stomach | all | BMIgt27	Row filter
 CUT_MEDIAN	FALSE	TRUE | FALSE	If TRUE, split exposure by median count
 
-Example:
+# Example:
 
 DATA_DIR=/mnt/ehr_exports OUT_DIR=./out SUBGROUP=all CUT_MEDIAN=TRUE Rscript upper_gi_models.R
 
@@ -101,7 +92,7 @@ Must include: ICDCd, cat_id (category label used for flags)
 
 Protected data: Do not include PHI or raw EHR in the public repo. Provide synthetic or minimally de-identified examples if needed. Reviewers can still run the pipeline on their side with similarly structured files.
 
-Outputs
+# Outputs
 
 Excel workbook: out/models_<SUBGROUP>.xlsx
 Sheets include model summaries (logistic; _c for conditional), meds counts (meds_cnt), diagnosis tests (diag_<years>y), and diagnosis code mappings (diag_codes).
@@ -124,7 +115,7 @@ Conditional model skipped: requires a strata_id column (matched set id). Without
 
 Java errors: not applicable; we use openxlsx (no Java dependency).
 
-How to cite
+# How to cite
 
 If you reuse this code, please cite:
 
@@ -143,14 +134,14 @@ BibTeX
 
 For journal archiving, consider creating a Zenodo DOI and adding the badge here.
 
-Ethical & AI disclosure
+# Ethical & AI disclosure
 
-During manuscript preparation, we used a large-language-model assistant (ChatGPT) for code refactoring, commenting, and README editing only. All analyses, results, and interpretations are the authors’ responsibility; the model did not perform or alter scientific analyses. (Add the same sentence to your manuscript Methods to satisfy Wiley/PLOS AI policies.)
-
-License
+During manuscript preparation, we used a large-language-model assistant (ChatGPT) for code refactoring, commenting, and README editing only.
+All analyses, results, and interpretations are the authors’ responsibility; the model did not perform or alter scientific analyses.
+# License
 
 This repository is released under CC-BY-NC-4.0. You may reuse and adapt with attribution for non-commercial purposes. For commercial use, please contact the author.
 
-Contact
+# Contact
 
 Questions or issues: open a GitHub Issue or email aisrael@leumit.co.il
